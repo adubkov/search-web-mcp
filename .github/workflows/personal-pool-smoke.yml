@@ -1,0 +1,16 @@
+name: personal-pool-smoke
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  smoke:
+    runs-on: [self-hosted, personal]
+    steps:
+      - name: Smoke
+        run: |
+          echo "personal pool smoke"
+          uname -srm
+          echo "runner: $RUNNER_NAME"
