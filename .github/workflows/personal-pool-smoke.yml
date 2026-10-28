@@ -4,6 +4,10 @@ on:
   push:
     branches: [master]
   workflow_dispatch:
+    inputs:
+      sleep_seconds:
+        description: Mid-job sleep window (crash-arm kill target)
+        default: '0'
 
 jobs:
   smoke:
@@ -14,3 +18,4 @@ jobs:
           echo "personal pool smoke"
           uname -srm
           echo "runner: $RUNNER_NAME"
+          sleep "${{ inputs.sleep_seconds || 0 }}"
